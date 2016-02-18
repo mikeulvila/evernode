@@ -5,5 +5,7 @@ block content
   h1= note.title
   p= note.text
 
+  form(action="/notes/#{note._id}/edit", method='GET')
+    button.btn.btn-primary EDIT
   form(action="/notes/#{note._id}?_method=DELETE", method='POST')
     button.btn.btn-danger Delete

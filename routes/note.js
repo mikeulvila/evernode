@@ -21,5 +21,11 @@ router.delete('/notes/:id', ctrl.destroy);
 // POST new note
 router.post('/notes', ctrl.create);
 
+// EDIT note
+router.get('/notes/:id/edit', ctrl.edit);
+
+// UPDATE note
+//router.put('/notes/:id', ctrl.update);
+
 
 module.exports = router;

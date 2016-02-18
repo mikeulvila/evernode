@@ -47,4 +47,32 @@ module.exports.destroy = (req, res) => {
   });
 };
 
+// edit note
+module.exports.edit = (req, res) => {
+  Note.findById(req.params.id, (err, note) => {
+    if (err) throw err;
+
+    res.render('new-note', {
+      note: note
+    });
+
+  });
+};
+
+// update note
+// module.exports.update = (req, res) => {
+//   Note.findOneAndUpdate(query, update, options, callback);
+//   res.send('UPDATE');
+// };
+
+
+
+
+
+
+
+
+
+
+
 
