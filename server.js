@@ -8,11 +8,7 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// model
-const Note = mongoose.model('notes', mongoose.Schema({
-  title: String,
-  text: String
-}));
+const Note = require('./models/note.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -46,9 +42,7 @@ app.get('/notes/:id', (req, res) => {
     res.render('show-note', {
       note: note
     });
-
   })
-
 });
 
 // POST new note
