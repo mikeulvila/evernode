@@ -60,10 +60,15 @@ module.exports.edit = (req, res) => {
 };
 
 // update note
-// module.exports.update = (req, res) => {
-//   Note.findOneAndUpdate(query, update, options, callback);
-//   res.send('UPDATE');
-// };
+module.exports.update = (req, res) => {
+  Note.findByIdAndUpdate(req.params.id,
+    req.body, (err, note) => {
+      if (err) throw err;
+
+      res.redirect(`/notes/${note._id}`);
+    }
+  );
+};
 
 
 

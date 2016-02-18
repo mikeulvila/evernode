@@ -25,7 +25,7 @@ router.post('/notes', ctrl.create);
 router.get('/notes/:id/edit', ctrl.edit);
 
 // UPDATE note
-//router.put('/notes/:id', ctrl.update);
+router.put('/notes/:id', ctrl.update);
 
 
 module.exports = router;
