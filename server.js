@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,6 +18,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// method override
+app.use(methodOverride('_method'));
+
 // routes
 const note = require('./routes/note.js');
 
@@ -25,6 +29,7 @@ app.get('/', (req, res) => {
   res.send('Server Running');
 });
 
+// use routes
 app.use(note);
 
 // wrap listen in mongoose callback to make sure mongo is connected
