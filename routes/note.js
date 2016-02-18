@@ -6,6 +6,9 @@ const router = express.Router();
 // controller
 const ctrl = require('../controllers/note.js');
 
+// GET all notes
+router.get('/notes', ctrl.index);
+
 // GET new note form
 router.get('/notes/new', ctrl.newNote);
 
