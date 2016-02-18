@@ -24,6 +24,10 @@ app.use(methodOverride('_method'));
 // routes
 const note = require('./routes/note.js');
 
+const logger = require('./lib/logger.js');
+// log request to database (this is writing our own middleware function)
+app.use(logger);
+
 // get root route
 app.get('/', (req, res) => {
   res.send('Server Running');

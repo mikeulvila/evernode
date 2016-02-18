@@ -7,7 +7,6 @@ const Note = require('../models/note.js');
 // controller
 const ctrl = require('../controllers/note.js');
 
-
 router.param('id', (req, res, next, id) => {
   Note.findById(id, (err, note) => {
     if (err) throw err;
