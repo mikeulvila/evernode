@@ -1,11 +1,14 @@
-h1 New Note
+extends layout
 
-form(method='POST', action="/notes" class='form form-control')
-  .input-group
-    label(for='title') Title
-    input#title(type="text", name='title')
-  .input-group
-    label(for='text') Text
-    textarea#text(name='text')
-  button(type="submit" class="btn btn-block") Save
+block content
+  h1=title
+
+  form(method='POST', action="/notes" class='form')
+    .input-group
+      label Title
+      input(type="text", name='title')
+    .input-group
+      label Text
+      textarea(name='text')
+    button(type="submit" class="btn btn-primary") Save
 

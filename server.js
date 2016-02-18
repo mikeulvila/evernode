@@ -33,7 +33,22 @@ app.get('/', (req, res) => {
 
 // GET new note form
 app.get('/notes/new', (req, res) => {
-  res.render('new-note')
+  res.render('new-note', {
+    title: 'New Note'
+  })
+});
+
+//GET show note
+app.get('/notes/:id', (req, res) => {
+  Note.findById(req.params.id, (err, note) => {
+    if (err) throw err;
+
+    res.render('show-note', {
+      note: note
+    });
+
+  })
+
 });
 
 // POST new note
@@ -41,7 +56,7 @@ app.post('/notes', (req, res) => {
   Note.create(req.body, (err, note) => {
     if (err) throw err;
     console.log('note: ', note);
-    res.redirect('/');
+    res.redirect(`/notes/${note._id}`);
   });
 });
 
@@ -50,7 +65,7 @@ mongoose.connect('mongodb://localhost:27017/evernode');
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  // we're connected!
+  // we're connected to database
   //start server
   app.listen(PORT, () => {
     console.log(`Evernode server running on port: ${PORT}`);
