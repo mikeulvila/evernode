@@ -6,31 +6,16 @@ const router = express.Router();
 // model
 const Note = require('../models/note.js');
 
+// controller
+const ctrl = require('../controllers/note.js');
+
 // GET new note form
-router.get('/notes/new', (req, res) => {
-  res.render('new-note', {
-    title: 'New Note'
-  })
-});
+router.get('/notes/new', ctrl.newNote);
 
 //GET show note
-router.get('/notes/:id', (req, res) => {
-  Note.findById(req.params.id, (err, note) => {
-    if (err) throw err;
-
-    res.render('show-note', {
-      note: note
-    });
-  })
-});
+router.get('/notes/:id', ctrl.show);
 
 // POST new note
-router.post('/notes', (req, res) => {
-  Note.create(req.body, (err, note) => {
-    if (err) throw err;
-    console.log('note: ', note);
-    res.redirect(`/notes/${note._id}`);
-  });
-});
+router.post('/notes', ctrl.create);
 
 module.exports = router;
