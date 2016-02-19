@@ -5,12 +5,9 @@ block content
   .container
     .row
       .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
-        h1 Notes
+        h1= category.name
         br
         ul(class='list-group')
           each note in notes
             li(class='list-group-item')
               a(href='/notes/#{note._id}')= note.title
-        .spacer
-        a(href="/notes/new") Add new note.
-

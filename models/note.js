@@ -6,5 +6,6 @@ const mongoose = require('mongoose');
 module.exports = mongoose.model('notes', mongoose.Schema({
   title: String,
   text: String,
-  category: String
+  category: {type: mongoose.Schema.Types.ObjectId,
+             ref: 'categories'}
 }));

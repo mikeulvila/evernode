@@ -31,7 +31,7 @@ app.use(logger);
 
 // get root route
 app.get('/', (req, res) => {
-  res.send('Server Running');
+  res.render('index');
 });
 
 // use routes

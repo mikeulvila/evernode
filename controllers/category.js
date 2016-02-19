@@ -23,7 +23,8 @@ module.exports = {
   // show category
   show (req, res) {
     res.render('show-category', {
-      category: req.category
+      category: req.category,
+      notes: req.category.notes
     });
   },
 

@@ -8,11 +8,14 @@ const Note = require('../models/note.js');
 const ctrl = require('../controllers/note.js');
 
 router.param('id', (req, res, next, id) => {
-  Note.findById(id, (err, note) => {
-    if (err) throw err;
+  Note
+    .findById(id)
+    .populate('category')
+    .exec((err, note) => {
+      if (err) throw err;
 
-    req.note = note;
-    next();
+      req.note = note;
+      next();
   });
 });
 

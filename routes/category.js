@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const Category = require('../models/category.js');
+const Note = require('../models/note.js');
 
 // controller
 const ctrl = require('../controllers/category.js');
@@ -12,7 +13,14 @@ router.param('id', (req, res, next, id) => {
     if (err) throw err;
 
     req.category = category;
-    next();
+
+    Note.find({category: id}, (err, notes) => {
+      if (err) throw err;
+
+      req.category.notes = notes;
+
+      next();
+    });
   });
 });
 

@@ -52,8 +52,14 @@ module.exports = {
 
   // edit note
   edit (req, res) {
-    res.render('new-note', {
-      note: req.note
+    Category.find({}, (err, categories) => {
+      if (err) throw err;
+
+      res.render('new-note', {
+        title: 'New Note',
+        categories: categories,
+        note: req.note
+      });
     });
   },
 

@@ -1,11 +1,18 @@
 extends layout
 
 block content
+  .spacer
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
 
-  h1= note.title
-  p= note.text
+        h1= note.title
+        p= note.text
+        p= note.category.name
 
-  form(action="/notes/#{note._id}/edit", method='GET')
-    button.btn.btn-primary EDIT
-  form(action="/notes/#{note._id}?_method=DELETE", method='POST')
-    button.btn.btn-danger Delete
+        form(action="/notes/#{note._id}/edit", method='GET')
+          .form-group
+            button.btn.btn-primary EDIT
+        form(action="/notes/#{note._id}?_method=DELETE", method='POST')
+          .form-group
+            button.btn.btn-danger Delete
