@@ -1,25 +1,29 @@
 extends layout
 
 block content
-  if note
-    h1 Edit Note
-  else
-    h1 New Note
+  .spacer
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+        if note
+          h1 Edit Note
+        else
+          h1 New Note
 
-  - var item = note || {title: '', text: ''};
-  - var override = note ? '/' + note._id + '?_method=PUT' : '';
+        - var item = note || {title: '', text: ''};
+        - var override = note ? '/' + note._id + '?_method=PUT' : '';
 
-  form(method='POST', action="/notes#{override}" class='form')
-    .input-group
-      label Title
-      input(type="text", name='title', value='#{item.title}')
-    .input-group
-      label Text
-      textarea(name='text')= item.text
-    .form-group
-      label Category:
-      select.form-control(name='category')
-        each category, i in categories
-          option(value='#{category._id}') #{category.title}
-    button(type="submit" class="btn btn-primary") Save
+        form(method='POST', action="/notes#{override}" class='form')
+          .form-group
+            label Title
+            input.form-control(type="text", name='title', value='#{item.title}')
+          .form-group
+            label Text
+            textarea.form-control(name='text')= item.text
+          .form-group
+            label Category:
+            select.form-control(name='category')
+              each category in categories
+                option(value='#{category._id}') #{category.name}
+          button(type="submit" class="btn btn-primary") Save
 

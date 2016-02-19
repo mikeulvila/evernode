@@ -1,5 +1,6 @@
 'use strict'
 const Note = require('../models/note.js');
+const Category = require('../models/category.js');
 
 module.exports = {
   // get all notes
@@ -14,9 +15,14 @@ module.exports = {
 
   // new note form
   newNote (req, res) {
-    res.render('new-note', {
-      title: 'New Note'
-    })
+    Category.find({}, (err, categories) => {
+      if (err) throw err;
+
+      res.render('new-note', {
+        title: 'New Note',
+        categories: categories
+      });
+    });
   },
 
   // show note
