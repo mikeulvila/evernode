@@ -23,8 +23,9 @@ app.use(methodOverride('_method'));
 
 // routes
 const note = require('./routes/note.js');
-
+const category = require('./routes/category.js');
 const logger = require('./lib/logger.js');
+
 // log request to database (this is writing our own middleware function)
 app.use(logger);
 
@@ -35,6 +36,7 @@ app.get('/', (req, res) => {
 
 // use routes
 app.use(note);
+app.use(category);
 
 // wrap listen in mongoose callback to make sure mongo is connected
 mongoose.connect('mongodb://localhost:27017/evernode');
