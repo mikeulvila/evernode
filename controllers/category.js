@@ -4,10 +4,11 @@ const Category = require('../models/category.js');
 module.exports = {
   // get all categories
   index (req, res) {
-    Note.find({}, (err, categories) => {
+    Category.find({}, (err, categories) => {
       if (err) throw err;
       res.render('categories-index', {
-        categories: categories
+        categories: categories,
+        title: 'Categories'
       });
     }).sort({title: 1});
   },
@@ -31,7 +32,7 @@ module.exports = {
     Category.create(req.body, (err, category) => {
       if (err) throw err;
       console.log('category: ', category);
-      res.send(`Created ${category.title} category with id: ${category._id}`);
+      res.redirect('/categories');
     });
   },
 

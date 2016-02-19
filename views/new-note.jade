@@ -16,5 +16,10 @@ block content
     .input-group
       label Text
       textarea(name='text')= item.text
+    .form-group
+      label Category:
+      select.form-control(name='category')
+        each category, i in categories
+          option(value='#{category._id}') #{category.title}
     button(type="submit" class="btn btn-primary") Save
 

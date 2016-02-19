@@ -5,5 +5,6 @@ const mongoose = require('mongoose');
 // model
 module.exports = mongoose.model('notes', mongoose.Schema({
   title: String,
-  text: String
+  text: String,
+  category: String
 }));

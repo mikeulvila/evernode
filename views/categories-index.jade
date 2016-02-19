@@ -8,6 +8,10 @@ block content
         h1= title
         br
         ul(class='list-group')
-          each category, i in categories
-            li(class='list-group-item')= category.title
+          each category in categories
+            li(class='list-group-item')
+              a(href='/categories/#{category._id}')= category.name
+        .spacer
+        a(href="/categories/new") Add new category.
+
 

@@ -4,5 +4,6 @@ const mongoose = require('mongoose');
 
 // model
 module.exports = mongoose.model('categories', mongoose.Schema({
-  title: String
+  name: String,
+  description: String
 }));

@@ -9,8 +9,11 @@ block content
 
         form(method='POST', action='/categories')
           .form-group
-            label Title:
-            input.form-control(name='title', type='text')
+            label Name:
+            input.form-control(name='name', type='text')
+          .form-group
+            label Description:
+            input.form-control(name='description', type='text')
 
           input.btn.btn-primary(name='submit',type='submit',value='Save')
 
